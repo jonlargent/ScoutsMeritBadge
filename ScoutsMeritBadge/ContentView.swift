@@ -334,25 +334,52 @@ struct ContentView: View {
     }
     
     private func loadInitialDataIfNeeded() async {
-        // Only load if database is empty and we haven't loaded before
-        guard meritBadges.isEmpty && !hasLoadedInitialData else { return }
-        
+        guard !hasLoadedInitialData else { return }
         hasLoadedInitialData = true
         
+        // Create sync service
+        let syncService = MeritBadgeJSONSyncService(
+            modelContext: modelContext,
+            jsonFilename: "merit_badges_lite"
+        )
+        
+        do {
+            // Check if JSON has changed and sync if needed
+            // This will:
+            // - Add new badges
+            // - Update existing badges (preserving user progress)
+            // - Keep removed badges in database
+            try await syncService.checkAndSyncIfNeeded()
+            
+            // If this is the first run (no badges in database), it will load everything
+            if meritBadges.isEmpty {
+                print("📦 First run detected, loading initial data...")
+            } else {
+                if let lastSync = syncService.getLastSyncDate() {
+                    print("✅ Last sync: \(lastSync.formatted())")
+                }
+            }
+        } catch {
+            print("❌ Error during JSON sync: \(error)")
+            // Fallback: try loading from JSON if database is empty
+            if meritBadges.isEmpty {
+                await loadFallbackData()
+            }
+        }
+    }
+    
+    private func loadFallbackData() async {
         do {
             let badges = try await MeritBadgeJSONLoader.loadFromBundle(filename: "merit_badges_lite")
             
             await MainActor.run {
-                // Insert all badges into the database
                 for badge in badges {
                     modelContext.insert(badge)
                 }
-                
-                // Save the context
                 try? modelContext.save()
             }
         } catch {
-            print("Error loading badges from JSON: \(error)")
+            print("❌ Fallback data load failed: \(error)")
         }
     }
     
