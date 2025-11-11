@@ -1,0 +1,698 @@
+[
+  {
+    "name": "First Aid",
+    "category": "Health and Safety",
+    "isEagleRequired": true,
+    "resourceURL": "https://www.scouting.org/merit-badges/first-aid/"
+  },
+  {
+    "name": "Camping",
+    "category": "Outdoor Skills",
+    "isEagleRequired": true,
+    "resourceURL": "https://www.scouting.org/merit-badges/camping/"
+  },
+  {
+    "name": "Citizenship in the Community",
+    "category": "Citizenship",
+    "isEagleRequired": true,
+    "resourceURL": "https://www.scouting.org/merit-badges/citizenship-in-the-community/"
+  },
+  {
+    "name": "Citizenship in the Nation",
+    "category": "Citizenship",
+    "isEagleRequired": true,
+    "resourceURL": "https://www.scouting.org/merit-badges/citizenship-in-the-nation/"
+  },
+  {
+    "name": "Citizenship in Society",
+    "category": "Citizenship",
+    "isEagleRequired": true,
+    "resourceURL": "https://www.scouting.org/merit-badges/citizenship-in-society/"
+  },
+  {
+    "name": "Citizenship in the World",
+    "category": "Citizenship",
+    "isEagleRequired": true,
+    "resourceURL": "https://www.scouting.org/merit-badges/citizenship-in-the-world/"
+  },
+  {
+    "name": "Communication",
+    "category": "Skills",
+    "isEagleRequired": true,
+    "resourceURL": "https://www.scouting.org/merit-badges/communication/"
+  },
+  {
+    "name": "Cooking",
+    "category": "Outdoor Skills",
+    "isEagleRequired": true,
+    "resourceURL": "https://www.scouting.org/merit-badges/cooking/"
+  },
+  {
+    "name": "Cycling",
+    "category": "Sports and Fitness",
+    "isEagleRequired": true,
+    "resourceURL": "https://www.scouting.org/merit-badges/cycling/"
+  },
+  {
+    "name": "Emergency Preparedness",
+    "category": "Health and Safety",
+    "isEagleRequired": true,
+    "resourceURL": "https://www.scouting.org/merit-badges/emergency-preparedness/"
+  },
+  {
+    "name": "Environmental Science",
+    "category": "Nature",
+    "isEagleRequired": true,
+    "resourceURL": "https://www.scouting.org/merit-badges/environmental-science/"
+  },
+  {
+    "name": "Family Life",
+    "category": "Skills",
+    "isEagleRequired": true,
+    "resourceURL": "https://www.scouting.org/merit-badges/family-life/"
+  },
+  {
+    "name": "Hiking",
+    "category": "Outdoor Skills",
+    "isEagleRequired": true,
+    "resourceURL": "https://www.scouting.org/merit-badges/hiking/"
+  },
+  {
+    "name": "Lifesaving",
+    "category": "Health and Safety",
+    "isEagleRequired": true,
+    "resourceURL": "https://www.scouting.org/merit-badges/lifesaving/"
+  },
+  {
+    "name": "Personal Fitness",
+    "category": "Sports and Fitness",
+    "isEagleRequired": true,
+    "resourceURL": "https://www.scouting.org/merit-badges/personal-fitness/"
+  },
+  {
+    "name": "Personal Management",
+    "category": "Business",
+    "isEagleRequired": true,
+    "resourceURL": "https://www.scouting.org/merit-badges/personal-management/"
+  },
+  {
+    "name": "Sustainability",
+    "category": "Nature",
+    "isEagleRequired": true,
+    "resourceURL": "https://www.scouting.org/merit-badges/sustainability/"
+  },
+  {
+    "name": "Swimming",
+    "category": "Sports and Fitness",
+    "isEagleRequired": true,
+    "resourceURL": "https://www.scouting.org/merit-badges/swimming/"
+  },
+  {
+    "name": "Programming",
+    "category": "STEM",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/programming/"
+  },
+  {
+    "name": "Robotics",
+    "category": "STEM",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/robotics/"
+  },
+  {
+    "name": "Game Design",
+    "category": "Arts and Hobbies",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/game-design/"
+  },
+  {
+    "name": "Photography",
+    "category": "Arts and Hobbies",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/photography/"
+  },
+  {
+    "name": "Art",
+    "category": "Arts and Hobbies",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/art/"
+  },
+  {
+    "name": "Music",
+    "category": "Arts and Hobbies",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/music/"
+  },
+  {
+    "name": "Aviation",
+    "category": "STEM",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/aviation/"
+  },
+  {
+    "name": "Space Exploration",
+    "category": "STEM",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/space-exploration/"
+  },
+  {
+    "name": "Astronomy",
+    "category": "Nature",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/astronomy/"
+  },
+  {
+    "name": "Geology",
+    "category": "Nature",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/geology/"
+  },
+  {
+    "name": "Fishing",
+    "category": "Outdoor Skills",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/fishing/"
+  },
+  {
+    "name": "Archery",
+    "category": "Sports and Fitness",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/archery/"
+  },
+  {
+    "name": "Woodworking",
+    "category": "Trades",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/woodworking/"
+  },
+  {
+    "name": "Entrepreneurship",
+    "category": "Business",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/entrepreneurship/"
+  },
+  {
+    "name": "Veterinary Medicine",
+    "category": "Health and Safety",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/veterinary-medicine/"
+  },
+  {
+    "name": "Coin Collecting",
+    "category": "Arts and Hobbies",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/coin-collecting/"
+  },
+  {
+    "name": "Animal Science",
+    "category": "Nature",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/animal-science/"
+  },
+  {
+    "name": "Architecture",
+    "category": "Trades",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/architecture/"
+  },
+  {
+    "name": "Basketry",
+    "category": "Arts and Hobbies",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/basketry/"
+  },
+  {
+    "name": "Bird Study",
+    "category": "Nature",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/bird-study/"
+  },
+  {
+    "name": "Chemistry",
+    "category": "STEM",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/chemistry/"
+  },
+  {
+    "name": "Chess",
+    "category": "Arts and Hobbies",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/chess/"
+  },
+  {
+    "name": "Climbing",
+    "category": "Outdoor Skills",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/climbing/"
+  },
+  {
+    "name": "Collections",
+    "category": "Arts and Hobbies",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/collections/"
+  },
+  {
+    "name": "Dentistry",
+    "category": "Health and Safety",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/dentistry/"
+  },
+  {
+    "name": "Digital Technology",
+    "category": "STEM",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/digital-technology/"
+  },
+  {
+    "name": "Drafting",
+    "category": "Trades",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/drafting/"
+  },
+  {
+    "name": "Electronics",
+    "category": "STEM",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/electronics/"
+  },
+  {
+    "name": "Engineering",
+    "category": "STEM",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/engineering/"
+  },
+  {
+    "name": "Farm Mechanics",
+    "category": "Trades",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/farm-mechanics/"
+  },
+  {
+    "name": "Fingerprinting",
+    "category": "Skills",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/fingerprinting/"
+  },
+  {
+    "name": "Fire Safety",
+    "category": "Health and Safety",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/fire-safety/"
+  },
+  {
+    "name": "Fly Fishing",
+    "category": "Outdoor Skills",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/fly-fishing/"
+  },
+  {
+    "name": "Forestry",
+    "category": "Nature",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/forestry/"
+  },
+  {
+    "name": "Gardening",
+    "category": "Nature",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/gardening/"
+  },
+  {
+    "name": "Genealogy",
+    "category": "Arts and Hobbies",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/genealogy/"
+  },
+  {
+    "name": "Golf",
+    "category": "Sports and Fitness",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/golf/"
+  },
+  {
+    "name": "Graphic Arts",
+    "category": "Arts and Hobbies",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/graphic-arts/"
+  },
+  {
+    "name": "Home Repairs",
+    "category": "Trades",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/home-repairs/"
+  },
+  {
+    "name": "Horsemanship",
+    "category": "Outdoor Skills",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/horsemanship/"
+  },
+  {
+    "name": "Indian Lore",
+    "category": "Arts and Hobbies",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/indian-lore/"
+  },
+  {
+    "name": "Insect Study",
+    "category": "Nature",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/insect-study/"
+  },
+  {
+    "name": "Inventing",
+    "category": "STEM",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/inventing/"
+  },
+  {
+    "name": "Journalism",
+    "category": "Skills",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/journalism/"
+  },
+  {
+    "name": "Landscape Architecture",
+    "category": "Trades",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/landscape-architecture/"
+  },
+  {
+    "name": "Law",
+    "category": "Citizenship",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/law/"
+  },
+  {
+    "name": "Leatherwork",
+    "category": "Arts and Hobbies",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/leatherwork/"
+  },
+  {
+    "name": "Mammal Study",
+    "category": "Nature",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/mammal-study/"
+  },
+  {
+    "name": "Medicine",
+    "category": "Health and Safety",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/medicine/"
+  },
+  {
+    "name": "Metalwork",
+    "category": "Trades",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/metalwork/"
+  },
+  {
+    "name": "Mining in Society",
+    "category": "STEM",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/mining-in-society/"
+  },
+  {
+    "name": "Model Design and Building",
+    "category": "Arts and Hobbies",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/model-design-and-building/"
+  },
+  {
+    "name": "Moviemaking",
+    "category": "Arts and Hobbies",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/moviemaking/"
+  },
+  {
+    "name": "Nature",
+    "category": "Nature",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/nature/"
+  },
+  {
+    "name": "Nuclear Science",
+    "category": "STEM",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/nuclear-science/"
+  },
+  {
+    "name": "Oceanography",
+    "category": "Nature",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/oceanography/"
+  },
+  {
+    "name": "Orienteering",
+    "category": "Outdoor Skills",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/orienteering/"
+  },
+  {
+    "name": "Painting",
+    "category": "Arts and Hobbies",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/painting/"
+  },
+  {
+    "name": "Pets",
+    "category": "Nature",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/pets/"
+  },
+  {
+    "name": "Pioneering",
+    "category": "Outdoor Skills",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/pioneering/"
+  },
+  {
+    "name": "Plant Science",
+    "category": "Nature",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/plant-science/"
+  },
+  {
+    "name": "Plumbing",
+    "category": "Trades",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/plumbing/"
+  },
+  {
+    "name": "Pottery",
+    "category": "Arts and Hobbies",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/pottery/"
+  },
+  {
+    "name": "Public Health",
+    "category": "Health and Safety",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/public-health/"
+  },
+  {
+    "name": "Public Speaking",
+    "category": "Skills",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/public-speaking/"
+  },
+  {
+    "name": "Pulp and Paper",
+    "category": "STEM",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/pulp-and-paper/"
+  },
+  {
+    "name": "Radio",
+    "category": "STEM",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/radio/"
+  },
+  {
+    "name": "Railroading",
+    "category": "Arts and Hobbies",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/railroading/"
+  },
+  {
+    "name": "Reading",
+    "category": "Skills",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/reading/"
+  },
+  {
+    "name": "Reptile and Amphibian Study",
+    "category": "Nature",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/reptile-and-amphibian-study/"
+  },
+  {
+    "name": "Rifle Shooting",
+    "category": "Sports and Fitness",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/rifle-shooting/"
+  },
+  {
+    "name": "Rowing",
+    "category": "Sports and Fitness",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/rowing/"
+  },
+  {
+    "name": "Safety",
+    "category": "Health and Safety",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/safety/"
+  },
+  {
+    "name": "Salesmanship",
+    "category": "Business",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/salesmanship/"
+  },
+  {
+    "name": "Scholarship",
+    "category": "Skills",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/scholarship/"
+  },
+  {
+    "name": "Scouting Heritage",
+    "category": "Skills",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/scouting-heritage/"
+  },
+  {
+    "name": "Scuba Diving",
+    "category": "Sports and Fitness",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/scuba-diving/"
+  },
+  {
+    "name": "Sculpture",
+    "category": "Arts and Hobbies",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/sculpture/"
+  },
+  {
+    "name": "Search and Rescue",
+    "category": "Health and Safety",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/search-and-rescue/"
+  },
+  {
+    "name": "Shotgun Shooting",
+    "category": "Sports and Fitness",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/shotgun-shooting/"
+  },
+  {
+    "name": "Signs, Signals, and Codes",
+    "category": "Skills",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/signs-signals-and-codes/"
+  },
+  {
+    "name": "Skating",
+    "category": "Sports and Fitness",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/skating/"
+  },
+  {
+    "name": "Small-Boat Sailing",
+    "category": "Sports and Fitness",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/small-boat-sailing/"
+  },
+  {
+    "name": "Snow Sports",
+    "category": "Sports and Fitness",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/snow-sports/"
+  },
+  {
+    "name": "Soil and Water Conservation",
+    "category": "Nature",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/soil-and-water-conservation/"
+  },
+  {
+    "name": "Sports",
+    "category": "Sports and Fitness",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/sports/"
+  },
+  {
+    "name": "Stamp Collecting",
+    "category": "Arts and Hobbies",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/stamp-collecting/"
+  },
+  {
+    "name": "Surveying",
+    "category": "STEM",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/surveying/"
+  },
+  {
+    "name": "Textile",
+    "category": "Arts and Hobbies",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/textile/"
+  },
+  {
+    "name": "Theater",
+    "category": "Arts and Hobbies",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/theater/"
+  },
+  {
+    "name": "Traffic Safety",
+    "category": "Health and Safety",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/traffic-safety/"
+  },
+  {
+    "name": "Truck Transportation",
+    "category": "Business",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/truck-transportation/"
+  },
+  {
+    "name": "Water Sports",
+    "category": "Sports and Fitness",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/water-sports/"
+  },
+  {
+    "name": "Weather",
+    "category": "Nature",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/weather/"
+  },
+  {
+    "name": "Welding",
+    "category": "Trades",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/welding/"
+  },
+  {
+    "name": "Whitewater",
+    "category": "Outdoor Skills",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/whitewater/"
+  },
+  {
+    "name": "Wilderness Survival",
+    "category": "Outdoor Skills",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/wilderness-survival/"
+  },
+  {
+    "name": "Wood Carving",
+    "category": "Arts and Hobbies",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/wood-carving/"
+  }
+]

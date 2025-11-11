@@ -12,14 +12,58 @@ import SwiftData
 struct ScoutsMeritBadgeApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            MeritBadge.self,
         ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        
+        let modelConfiguration = ModelConfiguration(
+            schema: schema,
+            isStoredInMemoryOnly: false
+        )
 
         do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+            let container = try ModelContainer(for: schema, configurations: [modelConfiguration])
+            print("✅ ModelContainer created successfully")
+            return container
         } catch {
-            fatalError("Could not create ModelContainer: \(error)")
+            print("⚠️ Failed to create ModelContainer: \(error)")
+            print("📝 Error details: \(error.localizedDescription)")
+            
+            // Attempt recovery by creating a fresh container
+            do {
+                // Get the default store URL
+                let appSupportURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+                let storeURL = appSupportURL.appendingPathComponent("default.store")
+                
+                print("📂 Database location: \(storeURL.path)")
+                
+                // Remove the existing database files
+                let fileManager = FileManager.default
+                if fileManager.fileExists(atPath: storeURL.path) {
+                    print("🗑️ Removing old database...")
+                    try? fileManager.removeItem(at: storeURL)
+                }
+                
+                // Also try to remove related files
+                let supportFiles = [
+                    storeURL.deletingLastPathComponent().appendingPathComponent("default.store-wal"),
+                    storeURL.deletingLastPathComponent().appendingPathComponent("default.store-shm")
+                ]
+                for file in supportFiles {
+                    if fileManager.fileExists(atPath: file.path) {
+                        try? fileManager.removeItem(at: file)
+                    }
+                }
+                
+                // Try creating container again
+                let container = try ModelContainer(for: schema, configurations: [modelConfiguration])
+                print("✅ ModelContainer created successfully after cleanup")
+                return container
+                
+            } catch {
+                print("❌ Failed to create ModelContainer even after cleanup")
+                print("❌ Error: \(error)")
+                fatalError("Could not create ModelContainer: \(error)")
+            }
         }
     }()
 
