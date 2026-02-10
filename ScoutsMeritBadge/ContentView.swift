@@ -352,14 +352,18 @@ struct ContentView: View {
             // - Update existing badges (preserving user progress)
             // - Keep removed badges in database
             try await syncService.checkAndSyncIfNeeded()
-            
-            // If this is the first run (no badges in database), it will load everything
+
+            // If database is empty, force a resync even if the JSON hash hasn't changed.
             if meritBadges.isEmpty {
-                print("📦 First run detected, loading initial data...")
-            } else {
-                if let lastSync = syncService.getLastSyncDate() {
-                    print("✅ Last sync: \(lastSync.formatted())")
-                }
+                print("📦 Empty database detected, forcing initial sync...")
+                try? await syncService.forceResync()
+            }
+
+            if meritBadges.isEmpty {
+                print("⚠️ Sync returned no badges, falling back to bundled/sample data.")
+                await loadFallbackData()
+            } else if let lastSync = syncService.getLastSyncDate() {
+                print("✅ Last sync: \(lastSync.formatted())")
             }
         } catch {
             print("❌ Error during JSON sync: \(error)")
@@ -373,7 +377,7 @@ struct ContentView: View {
     private func loadFallbackData() async {
         do {
             let badges = try await MeritBadgeJSONLoader.loadFromBundle(filename: "merit_badges_lite")
-            
+
             await MainActor.run {
                 for badge in badges {
                     modelContext.insert(badge)
@@ -381,7 +385,14 @@ struct ContentView: View {
                 try? modelContext.save()
             }
         } catch {
-            print("❌ Fallback data load failed: \(error)")
+            print("⚠️ Bundled JSON missing or invalid, using built-in sample data: \(error)")
+            let sampleBadges = MeritBadgeJSONLoader.getComprehensiveSampleData()
+            await MainActor.run {
+                for badge in sampleBadges {
+                    modelContext.insert(badge)
+                }
+                try? modelContext.save()
+            }
         }
     }
     
