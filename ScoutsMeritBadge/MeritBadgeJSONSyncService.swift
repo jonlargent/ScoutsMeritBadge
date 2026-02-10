@@ -15,24 +15,60 @@ class MeritBadgeJSONSyncService {
     
     private let modelContext: ModelContext
     private let jsonFilename: String
+    private let remoteURL: URL?
     
     // UserDefaults keys for tracking
     private let lastSyncHashKey = "lastJSONSyncHash"
     private let lastSyncDateKey = "lastJSONSyncDate"
     
-    init(modelContext: ModelContext, jsonFilename: String = "merit_badges_lite") {
+    init(modelContext: ModelContext, jsonFilename: String = "merit_badges_lite", remoteURL: String? = nil) {
         self.modelContext = modelContext
         self.jsonFilename = jsonFilename
+        self.remoteURL = remoteURL != nil ? URL(string: remoteURL!) : nil
     }
     
     /// Check if JSON has changed and sync if needed
     func checkAndSyncIfNeeded() async throws {
-        guard let jsonURL = Bundle.main.url(forResource: jsonFilename, withExtension: "json") else {
-            print("❌ JSON file not found: \(jsonFilename).json")
-            return
+        let jsonData: Data
+        
+        // Try to fetch from remote URL first, fall back to bundle
+        if let remoteURL = remoteURL {
+            do {
+                print("🌐 Fetching JSON from remote URL: \(remoteURL)")
+                let (data, response) = try await URLSession.shared.data(from: remoteURL)
+                
+                guard let httpResponse = response as? HTTPURLResponse else {
+                    throw URLError(.badServerResponse)
+                }
+                
+                guard (200...299).contains(httpResponse.statusCode) else {
+                    print("❌ HTTP Error: \(httpResponse.statusCode)")
+                    throw URLError(.badServerResponse)
+                }
+                
+                jsonData = data
+                print("✅ Successfully fetched remote JSON (\(data.count) bytes)")
+            } catch {
+                print("⚠️ Failed to fetch remote JSON: \(error.localizedDescription)")
+                print("   Falling back to bundled JSON...")
+                
+                // Fall back to bundled JSON
+                guard let jsonURL = Bundle.main.url(forResource: jsonFilename, withExtension: "json") else {
+                    print("❌ Bundled JSON file not found: \(jsonFilename).json")
+                    throw error // Rethrow the original error
+                }
+                jsonData = try Data(contentsOf: jsonURL)
+                print("✅ Using bundled JSON as fallback")
+            }
+        } else {
+            // Use bundled JSON if no remote URL provided
+            guard let jsonURL = Bundle.main.url(forResource: jsonFilename, withExtension: "json") else {
+                print("❌ JSON file not found: \(jsonFilename).json")
+                return
+            }
+            jsonData = try Data(contentsOf: jsonURL)
         }
         
-        let jsonData = try Data(contentsOf: jsonURL)
         let currentHash = calculateHash(for: jsonData)
         let lastKnownHash = UserDefaults.standard.string(forKey: lastSyncHashKey)
         

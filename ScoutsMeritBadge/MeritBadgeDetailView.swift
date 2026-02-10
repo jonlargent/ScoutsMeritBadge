@@ -10,6 +10,7 @@ import SwiftUI
 struct MeritBadgeDetailView: View {
     @Bindable var badge: MeritBadge
     @State private var showingResetAlert = false
+    @FocusState private var isNotesFieldFocused: Bool
     
     var body: some View {
         ZStack {
@@ -190,6 +191,56 @@ struct MeritBadgeDetailView: View {
                             RoundedRectangle(cornerRadius: 12)
                                 .fill(ScoutTheme.statCardBackground)
                         )
+                }
+                .padding(.horizontal)
+                
+                // Notes section with Scout styling
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack {
+                        Image(systemName: "note.text")
+                            .foregroundStyle(ScoutTheme.bsaBlue)
+                        Text("My Notes")
+                            .font(.headline)
+                            .foregroundStyle(ScoutTheme.bsaBlue)
+                        
+                        Spacer()
+                        
+                        if !badge.notes.isEmpty {
+                            Text("\(badge.notes.count) characters")
+                                .font(.caption2)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    
+                    ZStack(alignment: .topLeading) {
+                        if badge.notes.isEmpty && !isNotesFieldFocused {
+                            Text("Add notes about your experience, skills learned, or memories from earning this badge...")
+                                .foregroundStyle(.tertiary)
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 16)
+                        }
+                        
+                        TextEditor(text: $badge.notes)
+                            .focused($isNotesFieldFocused)
+                            .scrollContentBackground(.hidden)
+                            .frame(minHeight: 120)
+                            .padding(8)
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(Color(.systemBackground))
+                            )
+                    }
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(ScoutTheme.statCardBackground)
+                    )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .strokeBorder(
+                                isNotesFieldFocused ? ScoutTheme.bsaBlue.opacity(0.5) : Color.clear,
+                                lineWidth: 2
+                            )
+                    )
                 }
                 .padding(.horizontal)
                 

@@ -337,15 +337,17 @@ struct ContentView: View {
         guard !hasLoadedInitialData else { return }
         hasLoadedInitialData = true
         
-        // Create sync service
+        // Create sync service with remote URL
         let syncService = MeritBadgeJSONSyncService(
             modelContext: modelContext,
-            jsonFilename: "merit_badges_lite"
+            jsonFilename: MeritBadgeConfig.bundledJSONFilename,
+            remoteURL: MeritBadgeConfig.useRemoteJSON ? MeritBadgeConfig.remoteJSONURL : nil
         )
         
         do {
             // Check if JSON has changed and sync if needed
             // This will:
+            // - Fetch from remote URL (with fallback to bundled JSON)
             // - Add new badges
             // - Update existing badges (preserving user progress)
             // - Keep removed badges in database

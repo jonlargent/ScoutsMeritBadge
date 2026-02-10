@@ -20,6 +20,7 @@ final class MeritBadge {
     var completedRequirements: [Bool]
     var dateStarted: Date?
     var dateCompleted: Date?
+    var notes: String
     var isCompleted: Bool {
         dateCompleted != nil
     }
@@ -40,6 +41,7 @@ final class MeritBadge {
         self.completedRequirements = Array(repeating: false, count: requirements.count)
         self.dateStarted = nil
         self.dateCompleted = nil
+        self.notes = ""
     }
     
     /// Progress as a percentage (0.0 to 1.0)

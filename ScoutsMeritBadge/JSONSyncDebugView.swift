@@ -5,6 +5,7 @@
 //  Created by Jon Largent on 11/11/25.
 //
 
+#if DEBUG
 import SwiftUI
 import SwiftData
 
@@ -12,32 +13,51 @@ import SwiftData
 struct JSONSyncDebugView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var badges: [MeritBadge]
-    
+
     @State private var syncStatus = "Ready"
     @State private var lastSyncDate: Date?
     @State private var syncStats = SyncStats()
-    
+
     struct SyncStats {
         var totalBadges = 0
         var added = 0
         var updated = 0
         var removed = 0
     }
-    
+
     var body: some View {
         NavigationStack {
             List {
                 Section("Current Status") {
                     LabeledContent("Total Badges in DB", value: "\(badges.count)")
                     LabeledContent("Status", value: syncStatus)
-                    
+
                     if let lastSync = lastSyncDate {
                         LabeledContent("Last Sync", value: lastSync.formatted(date: .abbreviated, time: .shortened))
                     } else {
                         LabeledContent("Last Sync", value: "Never")
                     }
                 }
-                
+
+                Section("Configuration") {
+                    LabeledContent("Using Remote JSON", value: MeritBadgeConfig.useRemoteJSON ? "Yes" : "No")
+                        .foregroundStyle(MeritBadgeConfig.useRemoteJSON ? .green : .orange)
+
+                    if MeritBadgeConfig.useRemoteJSON {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("Remote URL:")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                            Text(MeritBadgeConfig.remoteJSONURL)
+                                .font(.caption2)
+                                .foregroundStyle(.blue)
+                        }
+                    }
+
+                    LabeledContent("Fallback File", value: "\(MeritBadgeConfig.bundledJSONFilename).json")
+                        .font(.caption)
+                }
+
                 if syncStats.totalBadges > 0 {
                     Section("Last Sync Stats") {
                         LabeledContent("Total in JSON", value: "\(syncStats.totalBadges)")
@@ -49,7 +69,7 @@ struct JSONSyncDebugView: View {
                             .foregroundStyle(syncStats.removed > 0 ? .red : .primary)
                     }
                 }
-                
+
                 Section("Actions") {
                     Button {
                         Task {
@@ -58,7 +78,7 @@ struct JSONSyncDebugView: View {
                     } label: {
                         Label("Check & Sync", systemImage: "arrow.triangle.2.circlepath")
                     }
-                    
+
                     Button {
                         Task {
                             await forceResync()
@@ -66,14 +86,14 @@ struct JSONSyncDebugView: View {
                     } label: {
                         Label("Force Resync", systemImage: "arrow.triangle.2.circlepath.circle.fill")
                     }
-                    
+
                     Button(role: .destructive) {
                         clearSyncHistory()
                     } label: {
                         Label("Clear Sync History", systemImage: "trash")
                     }
                 }
-                
+
                 Section("Database Actions") {
                     Button(role: .destructive) {
                         clearDatabase()
@@ -81,17 +101,26 @@ struct JSONSyncDebugView: View {
                         Label("Clear All Badges", systemImage: "trash.fill")
                     }
                 }
-                
+
                 Section("Testing Instructions") {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("How to Test:")
                             .font(.headline)
-                        
+
                         Text("1. Note the current badge count")
-                        Text("2. Edit merit_badges_lite.json (add/remove badges)")
-                        Text("3. Tap 'Force Resync' to see changes")
+                        Text("2. Update merit_badges_lite.json on the server at:")
+                        Text("   \(MeritBadgeConfig.remoteJSONURL)")
+                            .font(.caption2)
+                            .foregroundStyle(.blue)
+                        Text("3. Tap 'Force Resync' to fetch changes")
                         Text("4. Check the sync stats to see what changed")
                         Text("5. Verify that user progress was preserved")
+
+                        if !MeritBadgeConfig.useRemoteJSON {
+                            Text("⚠️ Remote JSON is disabled in config")
+                                .foregroundStyle(.orange)
+                                .fontWeight(.semibold)
+                        }
                     }
                     .font(.caption)
                     .foregroundStyle(.secondary)
@@ -103,31 +132,33 @@ struct JSONSyncDebugView: View {
             }
         }
     }
-    
+
     private func loadSyncInfo() {
         let syncService = MeritBadgeJSONSyncService(
             modelContext: modelContext,
-            jsonFilename: "merit_badges_lite"
+            jsonFilename: MeritBadgeConfig.bundledJSONFilename,
+            remoteURL: MeritBadgeConfig.useRemoteJSON ? MeritBadgeConfig.remoteJSONURL : nil
         )
         lastSyncDate = syncService.getLastSyncDate()
     }
-    
+
     private func performSync() async {
         syncStatus = "Checking..."
-        
+
         let syncService = MeritBadgeJSONSyncService(
             modelContext: modelContext,
-            jsonFilename: "merit_badges_lite"
+            jsonFilename: MeritBadgeConfig.bundledJSONFilename,
+            remoteURL: MeritBadgeConfig.useRemoteJSON ? MeritBadgeConfig.remoteJSONURL : nil
         )
-        
+
         do {
             try await syncService.checkAndSyncIfNeeded()
-            
+
             await MainActor.run {
                 syncStatus = "✅ Sync Complete"
                 lastSyncDate = syncService.getLastSyncDate()
             }
-            
+
             // Wait a moment then reset status
             try? await Task.sleep(for: .seconds(2))
             await MainActor.run {
@@ -139,26 +170,27 @@ struct JSONSyncDebugView: View {
             }
         }
     }
-    
+
     private func forceResync() async {
         syncStatus = "Force Syncing..."
-        
+
         let syncService = MeritBadgeJSONSyncService(
             modelContext: modelContext,
-            jsonFilename: "merit_badges_lite"
+            jsonFilename: MeritBadgeConfig.bundledJSONFilename,
+            remoteURL: MeritBadgeConfig.useRemoteJSON ? MeritBadgeConfig.remoteJSONURL : nil
         )
-        
+
         do {
             try await syncService.forceResync()
-            
+
             await MainActor.run {
                 syncStatus = "✅ Force Sync Complete"
                 lastSyncDate = syncService.getLastSyncDate()
-                
+
                 // Update stats
                 syncStats.totalBadges = badges.count
             }
-            
+
             try? await Task.sleep(for: .seconds(2))
             await MainActor.run {
                 syncStatus = "Ready"
@@ -169,16 +201,17 @@ struct JSONSyncDebugView: View {
             }
         }
     }
-    
+
     private func clearSyncHistory() {
         let syncService = MeritBadgeJSONSyncService(
             modelContext: modelContext,
-            jsonFilename: "merit_badges_lite"
+            jsonFilename: MeritBadgeConfig.bundledJSONFilename,
+            remoteURL: MeritBadgeConfig.useRemoteJSON ? MeritBadgeConfig.remoteJSONURL : nil
         )
         syncService.clearSyncHistory()
         lastSyncDate = nil
         syncStatus = "Sync history cleared"
-        
+
         Task {
             try? await Task.sleep(for: .seconds(2))
             await MainActor.run {
@@ -186,15 +219,15 @@ struct JSONSyncDebugView: View {
             }
         }
     }
-    
+
     private func clearDatabase() {
         for badge in badges {
             modelContext.delete(badge)
         }
         try? modelContext.save()
-        
+
         syncStatus = "Database cleared"
-        
+
         Task {
             try? await Task.sleep(for: .seconds(2))
             await MainActor.run {
@@ -208,3 +241,4 @@ struct JSONSyncDebugView: View {
     JSONSyncDebugView()
         .modelContainer(for: MeritBadge.self, inMemory: true)
 }
+#endif
