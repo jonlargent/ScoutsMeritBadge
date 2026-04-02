@@ -10,7 +10,7 @@ import SwiftData
 
 @Model
 final class MeritBadge {
-    @Attribute(.unique) var id: UUID
+    var id: UUID
     var name: String
     var badgeDescription: String
     var category: String
