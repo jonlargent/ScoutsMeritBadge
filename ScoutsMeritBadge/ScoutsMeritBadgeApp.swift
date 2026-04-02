@@ -17,7 +17,8 @@ struct ScoutsMeritBadgeApp: App {
         
         let modelConfiguration = ModelConfiguration(
             schema: schema,
-            isStoredInMemoryOnly: false
+            isStoredInMemoryOnly: false,
+            cloudKitDatabase: .automatic
         )
 
         do {
