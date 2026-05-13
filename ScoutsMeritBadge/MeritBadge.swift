@@ -10,17 +10,17 @@ import SwiftData
 
 @Model
 final class MeritBadge {
-    var id: UUID
-    var name: String
-    var badgeDescription: String
-    var category: String
-    var isEagleRequired: Bool
-    var requirements: [String]
+    var id: UUID = UUID()
+    var name: String = ""
+    var badgeDescription: String = ""
+    var category: String = ""
+    var isEagleRequired: Bool = false
+    var requirements: [String] = []
     var resourceURL: String?
-    var completedRequirements: [Bool]
+    var completedRequirements: [Bool] = []
     var dateStarted: Date?
     var dateCompleted: Date?
-    var notes: String
+    var notes: String = ""
     var isCompleted: Bool {
         dateCompleted != nil
     }

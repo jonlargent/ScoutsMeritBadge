@@ -10,6 +10,8 @@ import SwiftData
 
 @main
 struct ScoutsMeritBadgeApp: App {
+    private static let cloudKitContainerIdentifier = "iCloud.com.largentlabs.ScoutsMeritBadge"
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             MeritBadge.self,
@@ -18,7 +20,7 @@ struct ScoutsMeritBadgeApp: App {
         let modelConfiguration = ModelConfiguration(
             schema: schema,
             isStoredInMemoryOnly: false,
-            cloudKitDatabase: .automatic
+            cloudKitDatabase: .private(Self.cloudKitContainerIdentifier)
         )
 
         do {
@@ -28,40 +30,20 @@ struct ScoutsMeritBadgeApp: App {
         } catch {
             print("⚠️ Failed to create ModelContainer: \(error)")
             print("📝 Error details: \(error.localizedDescription)")
-            
-            // Attempt recovery by creating a fresh container
+
+            // Keep the app usable if CloudKit setup fails on a device.
             do {
-                // Get the default store URL
-                let appSupportURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
-                let storeURL = appSupportURL.appendingPathComponent("default.store")
-                
-                print("📂 Database location: \(storeURL.path)")
-                
-                // Remove the existing database files
-                let fileManager = FileManager.default
-                if fileManager.fileExists(atPath: storeURL.path) {
-                    print("🗑️ Removing old database...")
-                    try? fileManager.removeItem(at: storeURL)
-                }
-                
-                // Also try to remove related files
-                let supportFiles = [
-                    storeURL.deletingLastPathComponent().appendingPathComponent("default.store-wal"),
-                    storeURL.deletingLastPathComponent().appendingPathComponent("default.store-shm")
-                ]
-                for file in supportFiles {
-                    if fileManager.fileExists(atPath: file.path) {
-                        try? fileManager.removeItem(at: file)
-                    }
-                }
-                
-                // Try creating container again
-                let container = try ModelContainer(for: schema, configurations: [modelConfiguration])
-                print("✅ ModelContainer created successfully after cleanup")
+                let localConfiguration = ModelConfiguration(
+                    schema: schema,
+                    isStoredInMemoryOnly: false,
+                    cloudKitDatabase: .none
+                )
+                let container = try ModelContainer(for: schema, configurations: [localConfiguration])
+                print("✅ ModelContainer created successfully without CloudKit")
                 return container
                 
             } catch {
-                print("❌ Failed to create ModelContainer even after cleanup")
+                print("❌ Failed to create local ModelContainer")
                 print("❌ Error: \(error)")
                 fatalError("Could not create ModelContainer: \(error)")
             }
