@@ -187,6 +187,12 @@ class MeritBadgeJSONSyncService {
             hasChanges = true
         }
         
+        // Update availability if changed (e.g. a badge was discontinued or renamed)
+        if existing.isAvailable != json.isAvailable {
+            existing.isAvailable = json.isAvailable
+            hasChanges = true
+        }
+        
         // Update requirements while preserving completion status
         if existing.requirements != json.requirements {
             let oldRequirements = existing.requirements

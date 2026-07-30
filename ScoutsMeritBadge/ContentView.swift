@@ -524,6 +524,19 @@ struct ScoutBadgeRow: View {
                                 .font(.caption2)
                         }
                     }
+                    
+                    if !badge.isAvailable {
+                        Text("Not Available")
+                            .font(.caption2)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(ScoutTheme.warning)
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 2)
+                            .background(
+                                Capsule()
+                                    .fill(ScoutTheme.warning.opacity(0.15))
+                            )
+                    }
                 }
                 
                 HStack(spacing: 4) {

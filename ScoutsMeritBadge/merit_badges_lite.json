@@ -489,7 +489,14 @@
     "name": "Indian Lore",
     "category": "Arts and Hobbies",
     "isEagleRequired": false,
-    "resourceURL": "https://www.scouting.org/merit-badges/indian-lore/"
+    "resourceURL": "https://www.scouting.org/merit-badges/indian-lore/",
+    "isAvailable": false
+  },
+  {
+    "name": "American Indian Culture",
+    "category": "Arts and Hobbies",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/american-indian-culture/"
   },
   {
     "name": "Insect Study",
@@ -844,5 +851,17 @@
     "category": "Arts and Hobbies",
     "isEagleRequired": false,
     "resourceURL": "https://www.scouting.org/merit-badges/wood-carving/"
+  },
+  {
+    "name": "Competitive Gaming",
+    "category": "Arts and Hobbies",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/competitive-gaming/"
+  },
+  {
+    "name": "Wildland Fire Management",
+    "category": "Nature",
+    "isEagleRequired": false,
+    "resourceURL": "https://www.scouting.org/merit-badges/wildland-fire-management/"
   }
 ]

@@ -20,6 +20,8 @@ struct MeritBadgeJSONLoader {
         let description: String?
         let badgeDescription: String?
         let requirements: [String]?
+        // Defaults to available (true) when absent so existing JSON stays valid.
+        let isAvailable: Bool?
     }
     
     enum LoaderError: Error, LocalizedError {
@@ -60,7 +62,8 @@ struct MeritBadgeJSONLoader {
                     category: jsonBadge.category,
                     isEagleRequired: jsonBadge.isEagleRequired,
                     requirements: jsonBadge.requirements ?? [],
-                    resourceURL: jsonBadge.resourceURL
+                    resourceURL: jsonBadge.resourceURL,
+                    isAvailable: jsonBadge.isAvailable ?? true
                 )
             }
         } catch {
@@ -83,7 +86,8 @@ struct MeritBadgeJSONLoader {
                     category: jsonBadge.category,
                     isEagleRequired: jsonBadge.isEagleRequired,
                     requirements: jsonBadge.requirements ?? [],
-                    resourceURL: jsonBadge.resourceURL
+                    resourceURL: jsonBadge.resourceURL,
+                    isAvailable: jsonBadge.isAvailable ?? true
                 )
             }
         } catch {

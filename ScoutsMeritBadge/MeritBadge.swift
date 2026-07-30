@@ -17,6 +17,9 @@ final class MeritBadge {
     var isEagleRequired: Bool = false
     var requirements: [String] = []
     var resourceURL: String?
+    /// Whether this badge is currently offered by Scouting America. Discontinued or
+    /// renamed badges are kept for historical reference but marked as not available.
+    var isAvailable: Bool = true
     var completedRequirements: [Bool] = []
     var dateStarted: Date?
     var dateCompleted: Date?
@@ -30,7 +33,8 @@ final class MeritBadge {
          category: String, 
          isEagleRequired: Bool = false,
          requirements: [String] = [],
-         resourceURL: String? = nil) {
+         resourceURL: String? = nil,
+         isAvailable: Bool = true) {
         self.id = UUID()
         self.name = name
         self.badgeDescription = badgeDescription
@@ -38,6 +42,7 @@ final class MeritBadge {
         self.isEagleRequired = isEagleRequired
         self.requirements = requirements
         self.resourceURL = resourceURL
+        self.isAvailable = isAvailable
         self.completedRequirements = Array(repeating: false, count: requirements.count)
         self.dateStarted = nil
         self.dateCompleted = nil

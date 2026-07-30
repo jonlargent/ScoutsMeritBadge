@@ -36,6 +36,19 @@ struct MeritBadgeDetailView: View {
                                     Capsule()
                                         .fill(ScoutTheme.scoutKhaki.opacity(0.3))
                                 )
+                            
+                            if !badge.isAvailable {
+                                Label("No longer offered by Scouting America", systemImage: "exclamationmark.triangle.fill")
+                                    .font(.caption)
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(ScoutTheme.warning)
+                                    .padding(.horizontal, 12)
+                                    .padding(.vertical, 4)
+                                    .background(
+                                        Capsule()
+                                            .fill(ScoutTheme.warning.opacity(0.15))
+                                    )
+                            }
                         }
                         
                         Spacer()
