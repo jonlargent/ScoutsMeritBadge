@@ -65,8 +65,10 @@ struct TipJarView: View {
 
     private var header: some View {
         VStack(spacing: 12) {
-            FleurDeLis()
-                .fill(ScoutTheme.scoutGradient)
+            Image(systemName: "tent.fill")
+                .resizable()
+                .scaledToFit()
+                .foregroundStyle(ScoutTheme.scoutGradient)
                 .frame(width: 70, height: 70)
                 .shadow(color: ScoutTheme.bsaRed.opacity(0.3), radius: 8, y: 4)
 

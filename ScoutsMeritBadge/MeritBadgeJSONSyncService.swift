@@ -35,7 +35,12 @@ class MeritBadgeJSONSyncService {
         if let remoteURL = remoteURL {
             do {
                 print("🌐 Fetching JSON from remote URL: \(remoteURL)")
-                let (data, response) = try await URLSession.shared.data(from: remoteURL)
+                // Ignore any HTTP cache so we always see the latest badge list.
+                // Without this, URLSession can return a stale cached copy and the
+                // hash check reports "unchanged", so newly added badges never sync.
+                var request = URLRequest(url: remoteURL)
+                request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+                let (data, response) = try await URLSession.shared.data(for: request)
                 
                 guard let httpResponse = response as? HTTPURLResponse else {
                     throw URLError(.badServerResponse)

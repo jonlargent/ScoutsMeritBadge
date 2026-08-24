@@ -189,8 +189,10 @@ struct MeritBadgeDetailView: View {
                 // Description with Scout styling
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
-                        FleurDeLis()
-                            .fill(ScoutTheme.bsaRed)
+                        Image(systemName: "tent.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundStyle(ScoutTheme.bsaRed)
                             .frame(width: 20, height: 20)
                         Text("About This Badge")
                             .font(.headline)

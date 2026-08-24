@@ -89,8 +89,10 @@ struct ContentView: View {
                         VStack(spacing: 12) {
                             // Scout emblem header
                             HStack {
-                                FleurDeLis()
-                                    .fill(ScoutTheme.bsaRed)
+                                Image(systemName: "tent.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .foregroundStyle(ScoutTheme.bsaRed)
                                     .frame(width: 30, height: 30)
                                 
                                 Text("My Progress")
@@ -100,10 +102,11 @@ struct ContentView: View {
                                 
                                 Spacer()
                                 
-                                FleurDeLis()
-                                    .fill(ScoutTheme.bsaRed)
+                                Image(systemName: "tent.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .foregroundStyle(ScoutTheme.bsaRed)
                                     .frame(width: 30, height: 30)
-                                    .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
                             }
                             
                             // Statistics cards
@@ -322,8 +325,10 @@ struct ContentView: View {
             }
         } detail: {
             VStack(spacing: 20) {
-                FleurDeLis()
-                    .fill(ScoutTheme.scoutGradient)
+                Image(systemName: "tent.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundStyle(ScoutTheme.scoutGradient)
                     .frame(width: 80, height: 80)
                     .shadow(color: ScoutTheme.bsaRed.opacity(0.3), radius: 8, y: 4)
                 

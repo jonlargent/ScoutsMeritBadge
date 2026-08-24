@@ -143,68 +143,6 @@ extension View {
     }
 }
 
-// MARK: - Scout Fleur-de-lis Shape (BSA Symbol)
-
-struct FleurDeLis: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        let width = rect.width
-        let height = rect.height
-        
-        // Simplified fleur-de-lis shape
-        path.move(to: CGPoint(x: width * 0.5, y: height * 0.1))
-        
-        // Center petal
-        path.addCurve(
-            to: CGPoint(x: width * 0.5, y: height * 0.5),
-            control1: CGPoint(x: width * 0.3, y: height * 0.15),
-            control2: CGPoint(x: width * 0.35, y: height * 0.4)
-        )
-        path.addCurve(
-            to: CGPoint(x: width * 0.5, y: height * 0.1),
-            control1: CGPoint(x: width * 0.65, y: height * 0.4),
-            control2: CGPoint(x: width * 0.7, y: height * 0.15)
-        )
-        
-        // Left petal
-        path.move(to: CGPoint(x: width * 0.5, y: height * 0.3))
-        path.addCurve(
-            to: CGPoint(x: width * 0.2, y: height * 0.5),
-            control1: CGPoint(x: width * 0.35, y: height * 0.3),
-            control2: CGPoint(x: width * 0.25, y: height * 0.35)
-        )
-        path.addCurve(
-            to: CGPoint(x: width * 0.4, y: height * 0.5),
-            control1: CGPoint(x: width * 0.2, y: height * 0.55),
-            control2: CGPoint(x: width * 0.3, y: height * 0.55)
-        )
-        
-        // Right petal
-        path.move(to: CGPoint(x: width * 0.5, y: height * 0.3))
-        path.addCurve(
-            to: CGPoint(x: width * 0.8, y: height * 0.5),
-            control1: CGPoint(x: width * 0.65, y: height * 0.3),
-            control2: CGPoint(x: width * 0.75, y: height * 0.35)
-        )
-        path.addCurve(
-            to: CGPoint(x: width * 0.6, y: height * 0.5),
-            control1: CGPoint(x: width * 0.8, y: height * 0.55),
-            control2: CGPoint(x: width * 0.7, y: height * 0.55)
-        )
-        
-        // Bottom stem
-        path.move(to: CGPoint(x: width * 0.45, y: height * 0.5))
-        path.addLine(to: CGPoint(x: width * 0.45, y: height * 0.8))
-        path.addQuadCurve(
-            to: CGPoint(x: width * 0.55, y: height * 0.8),
-            control: CGPoint(x: width * 0.5, y: height * 0.85)
-        )
-        path.addLine(to: CGPoint(x: width * 0.55, y: height * 0.5))
-        
-        return path
-    }
-}
-
 // MARK: - Merit Badge Shape
 
 struct MeritBadgeShape: Shape {
@@ -266,3 +204,4 @@ struct CampfireShape: Shape {
         return path
     }
 }
+
