@@ -18,6 +18,7 @@ struct ContentView: View {
     @State private var showInProgressOnly = false
     @State private var showNotStartedOnly = false
     @State private var hasLoadedInitialData = false
+    @State private var showingTipJar = false
 
     var filteredBadges: [MeritBadge] {
         var filtered = meritBadges
@@ -291,7 +292,15 @@ struct ContentView: View {
                         }
                         
                         Divider()
-                        
+
+                        Button {
+                            showingTipJar = true
+                        } label: {
+                            Label("Support the App", systemImage: "heart")
+                        }
+
+                        Divider()
+
                         Button(role: .destructive) {
                             resetAllProgress()
                         } label: {
@@ -307,6 +316,9 @@ struct ContentView: View {
             .toolbarBackground(ScoutTheme.headerBackground, for: .navigationBar)
             .task {
                 await loadInitialDataIfNeeded()
+            }
+            .sheet(isPresented: $showingTipJar) {
+                TipJarView()
             }
         } detail: {
             VStack(spacing: 20) {
